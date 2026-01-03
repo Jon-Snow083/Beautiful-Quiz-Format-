@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>समाजिक प्रश्न र उत्तर</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: 'Bahnschrift', sans-serif;
+      background: url('rfbg.png') no-repeat center center / cover;
+      color: #333;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative; 
+    }
+
+    /* Background overlay */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+      z-index: -2; /* Ensure it stays behind everything */
+    }
+
+    /* Leaf animations */
+    #leaves {
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Place the leaves behind content but above the overlay */
+    }
+
+    #leaves i {
+      display: inline-block;
+      width: 30px;
+      height: 25px;
+      background: linear-gradient(to bottom right, #309900, #005600);
+      transform: skew(20deg);
+      border-radius: 5% 40% 70%;
+      box-shadow: inset 0px 0px 1px #222;
+      border: 1px solid #333;
+      position: absolute; /* Absolute positioning to move them randomly */
+      animation: falling 5s linear infinite;
+    }
+
+    @keyframes falling {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate3d(-400px, 700px, 0) rotate(90deg);
+        opacity: 0;
+      }
+    }
+
+    /* Glow animation for logo */
+    .logo-container {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 20px;
+      animation: pulse 2s infinite;
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 10px #32a852); /* Green glow */
+    }
+
+    /* Header Section */
+    header h1 {
+      font-size: 3.5em;
+      font-weight: bold;
+      color: #ffffff; /* Bright white text */
+      text-shadow: 0 0 10px #32a852, 0 0 20px #32a852, 0 0 30px #32a852; /* Glow effect */
+    }
+
+    header p {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #dddddd; /* Light gray for contrast */
+    }
+
+    /* Interactive Rounds Section */
+    .rounds {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 20px;
+      max-width: 900px;
+      margin: 40px auto;
+    }
+
+    .round {
+      background-color: #ffffff; /* White */
+      color: #333;
+      padding: 20px;
+      font-size: 1.4em;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, background-color 0.3s;
+      cursor: pointer;
+      animation: rgbLight 5s infinite alternate; /* RGB animation */
+    }
+
+    .round:hover {
+      background-color: #32a852;
+      color: #ffffff;
+      transform: scale(1.1); /* Smooth scaling */
+    }
+
+    .round a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Footer Section */
+    footer {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #ffffff; /* White text for visibility */
+    }
+
+    footer a {
+      text-decoration: none;
+      color: #32a852;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Elongated Question 10 */
+    .round.elongated {
+      grid-column: span 3; /* Makes it span all 3 columns */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+      animation: rgbLight 5s infinite alternate; /* Keep RGB lighting effect */
+    }
+
+    /* Pulse Animation */
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1); /* Original size */
+        filter: drop-shadow(0 0 10px #42bc62); /* Green glow */
+      }
+      50% {
+        transform: scale(1.3); /* Slightly larger */
+        filter: drop-shadow(0 0 16px #42bc62); /* Stronger glow */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="leaves">
+    <script>
+      const leavesContainer = document.getElementById('leaves');
+      for (let i = 0; i < 50; i++) { 
+        const leaf = document.createElement('i');
+        const randomDelay = Math.random() * 5;
+        const colors = ['#309900', '#8B4513', '#A0522D'];
+        leaf.style.animationDelay = `${randomDelay}s`;
+        leaf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        leaf.style.left = `${Math.random() * 100}%`; /* Random left position */
+        leaf.style.top = `${Math.random() * 100}%`; /* Random top position */
+        leavesContainer.appendChild(leaf);
+      }
+    </script>
+  </div>
+  <center>
+    <br>
+    <div class="logo-container">
+      <a href="rapidfire.html"><img src="ops.png"></a>
+    </div>
+    <br>
+    <header>
+      <h1>Rapid Fire: Finals - 2081</h1><br><h1>Set - C</h1>
+      <p>Answer your quick but, dont hurry because Each answer you get wrong is 10 points in the bin...</p>
+    </header>
+    <br>
+    <div class="rounds">
+      <div class="round"><a href="round1.html">Question 1</a></div>
+      <div class="round"><a href="round2.html">Question 2</a></div>
+      <div class="round"><a href="round3.html">Question 3</a></div>
+      <div class="round"><a href="round4.html">Question 4</a></div>
+      <div class="round"><a href="round5.html">Question 5</a></div>
+      <div class="round"><a href="round6.html">Question 6</a></div>
+      <div class="round"><a href="round7.html">Question 7</a></div>
+      <div class="round"><a href="round8.html">Question 8</a></div>
+      <div class="round"><a href="round9.html">Question 9</a></div>
+      <div class="round elongated"><a href="setc.html">Question 10</a></div>
+    </div>
+    <br><br>
+    <footer>
+      <p>© 2081 Occidental Public School - <a href="contact.html">Contact Us</a></p>
+    </footer>
+  </center>
+</body>
+</html>

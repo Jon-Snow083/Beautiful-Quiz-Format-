@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>समाजिक प्रश्न र उत्तर</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: 'Bahnschrift', sans-serif;
+      background: url('rfbg.png') no-repeat center center / cover;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative; /* Allow positioning of falling leaves */
+    }
+
+    /* Leaf animations */
+    #leaves {
+      position: absolute;
+      top: -50px;
+      width: 100%;
+      text-align: right;
+      z-index: -1; /* Place the leaves behind content */
+    }
+
+    #leaves i {
+      display: inline-block;
+      width: 30px; /* Much smaller width */
+      height: 25px; /* Much smaller height */
+      background: linear-gradient(to bottom right, #309900, #005600);
+      transform: skew(20deg);
+      border-radius: 5% 40% 70%;
+      box-shadow: inset 0px 0px 1px #222;
+      border: 1px solid #333;
+      z-index: 1;
+      animation: falling 5s 0s infinite;
+    }
+
+    #leaves i:nth-of-type(2n) {
+      animation: falling2 5s 0s infinite;
+    }
+
+    #leaves i:nth-of-type(3n) {
+      animation: falling3 5s 0s infinite;
+    }
+
+    #leaves i:before {
+      position: absolute;
+      content: '';
+      top: 25px; /* Adjusted for smaller size */
+      right: 5px; /* Adjusted for smaller size */
+      height: 8px; /* Smaller size */
+      width: 10px; /* Smaller size */
+      transform: rotate(49deg);
+      border-radius: 0% 15% 15% 0%;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+      border-right: 1px solid #222;
+      background: linear-gradient(to right, rgba(0,100,0,1), #005600);
+    }
+
+    #leaves i:after {
+      content: '';
+      height: 35px; /* Shorter stem */
+      width: 2px; /* Thinner stem */
+      background: linear-gradient(to right, rgba(0,0,0,.15), rgba(0,0,0,0));
+      display: block;
+      transform: rotate(125deg);
+      position: absolute;
+      left: 25px; /* Adjusted for smaller size */
+      border-radius: 50%;
+    }
+
+    @keyframes falling {
+      0% {
+        transform: translate3d(300, 0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate3d(-350px, 700px, 0) rotate(90deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes falling3 {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(-20deg);
+      }
+      100% {
+        transform: translate3d(-230px, 640px, 0) rotate(-70deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes falling2 {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(90deg);
+      }
+      100% {
+        transform: translate3d(-400px, 680px, 0) rotate(0deg);
+        opacity: 0;
+      }
+    }
+
+    /* Logo Section */
+    .logo-container {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 20px;
+      animation: pulse 2s infinite; /* Glow animation */
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 10px #32a852); /* Green glow */
+    }
+
+    /* Header Section */
+    header h1 {
+      font-size: 3.5em;
+      font-weight: bold;
+      color: #064420; /* Dark green */
+    }
+
+    header p {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Rounds Section */
+    .rounds {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 20px;
+      max-width: 900px;
+      margin: 40px auto;
+    }
+
+    .round {
+      background-color: #ffffff; /* White */
+      color: #333;
+      padding: 20px;
+      font-size: 1.4em;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, background-color 0.3s;
+      cursor: pointer;
+      animation: rgbLight 5s infinite alternate; /* RGB animation */
+    }
+
+    /* RGB Lighting Effect */
+    @keyframes rgbLight {
+      0% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 15px rgba(0, 255, 0, 0.5), 0 0 20px rgba(0, 0, 255, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 15px rgba(0, 255, 255, 0.5), 0 0 20px rgba(75, 0, 130, 0.5);
+      }
+      100% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 15px rgba(0, 255, 0, 0.5), 0 0 20px rgba(0, 0, 255, 0.5);
+      }
+    }
+
+    .round:hover {
+      background-color: #32a852;
+      color: #ffffff;
+      transform: translateY(-5px);
+    }
+
+    .round a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Center Seventh Round */
+    .rounds .round:nth-child(7) {
+      grid-column: span 3;
+    }
+
+    /* Footer Section */
+    footer {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #064420;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: #064420;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Pulse Animation */
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px #32a852);
+      }
+      50% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 20px #32a852);
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Leaf Container for Falling Leaves -->
+  <div id="leaves">
+    <!-- Generate leaves dynamically with JavaScript -->
+    <script>
+      const leavesContainer = document.getElementById('leaves');
+      for (let i = 0; i < 50; i++) { // Generate 50 leaves
+        const leaf = document.createElement('i');
+        
+        // Add a random animation delay for each leaf
+        const randomDelay = Math.random() * 5; // Delay between 0 and 5 seconds
+        leaf.style.animationDelay = `${randomDelay}s`;
+        leavesContainer.appendChild(leaf);
+      }
+    </script>
+  </div>
+
+  <!-- Logo Section -->
+  <div class="logo-container">
+    <img src="ops.jpg">
+  </div>
+
+  <!-- Header Section -->
+  <header>
+    <h1>Rapid Fire: Semi Finals - 2081</h1>
+    <p>Answer your quick but, dont hurry because Each answer you get wrong is 10 points in the bin...</p>
+  </header>
+
+  <!-- Interactive Rounds Section -->
+  <div class="rounds">
+    <div class="round"><a href="round1.html">Question 1</a></div>
+    <div class="round"><a href="round2.html">Question 2</a></div>
+    <div class="round"><a href="round3.html">Question 3</a></div>
+    <div class="round"><a href="round4.html">Question 4</a></div>
+    <div class="round"><a href="round5.html">Question 5</a></div>
+    <div class="round"><a href="round6.html">Question 6</a></div>
+    <div class="round"><a href="round7.html">Question 7</a></div>
+    <div class="round"><a href="round8.html">Question 8</a></div>
+    <div class="round"><a href="round9.html">Question 9</a></div>
+    <div class="round"><a href="round10.html">Question 10</a></div>
+  </div>
+
+  <!-- Footer Section -->
+</body>
+</html>

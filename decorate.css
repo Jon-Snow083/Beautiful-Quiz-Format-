@@ -1,0 +1,86 @@
+/* Leaf animations */
+    #leaves {
+      position: absolute;
+      top: -50px;
+      width: 100%;
+      text-align: right;
+      z-index: -1; /* Place the leaves behind content */
+    }
+
+    #leaves i {
+      display: inline-block;
+      width: 30px; /* Much smaller width */
+      height: 25px; /* Much smaller height */
+      background: linear-gradient(to bottom right, #309900, #005600);
+      transform: skew(20deg);
+      border-radius: 5% 40% 70%;
+      box-shadow: inset 0px 0px 1px #222;
+      border: 1px solid #333;
+      z-index: 1;
+      animation: falling 5s 0s infinite;
+    }
+
+    #leaves i:nth-of-type(2n) {
+      animation: falling2 5s 0s infinite;
+    }
+
+    #leaves i:nth-of-type(3n) {
+      animation: falling3 5s 0s infinite;
+    }
+
+    #leaves i:before {
+      position: absolute;
+      content: '';
+      top: 25px; /* Adjusted for smaller size */
+      right: 5px; /* Adjusted for smaller size */
+      height: 8px; /* Smaller size */
+      width: 10px; /* Smaller size */
+      transform: rotate(49deg);
+      border-radius: 0% 15% 15% 0%;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+      border-right: 1px solid #222;
+      background: linear-gradient(to right, rgba(0,100,0,1), #005600);
+    }
+
+    #leaves i:after {
+      content: '';
+      height: 35px; /* Shorter stem */
+      width: 2px; /* Thinner stem */
+      background: linear-gradient(to right, rgba(0,0,0,.15), rgba(0,0,0,0));
+      display: block;
+      transform: rotate(125deg);
+      position: absolute;
+      left: 25px; /* Adjusted for smaller size */
+      border-radius: 50%;
+    }
+
+    @keyframes falling {
+      0% {
+        transform: translate3d(300, 0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate3d(-350px, 700px, 0) rotate(90deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes falling3 {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(-20deg);
+      }
+      100% {
+        transform: translate3d(-230px, 640px, 0) rotate(-70deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes falling2 {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(90deg);
+      }
+      100% {
+        transform: translate3d(-400px, 680px, 0) rotate(0deg);
+        opacity: 0;
+      }
+    }
